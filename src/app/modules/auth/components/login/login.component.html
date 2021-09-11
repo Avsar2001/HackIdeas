@@ -1,0 +1,60 @@
+<form class="login100-form validate-form" [formGroup]="loginForm" #ngForm="ngForm">
+    <span class="login100-form-title p-b-43">
+        Login to continue
+    </span>
+
+    <div 
+        class="wrap-input100 validate-input" 
+        data-validate="Valid Employee Id is required: 123..."
+        [ngClass]="{'alert-validate': ngForm.submitted && loginForm.invalid}"
+    >
+        <input class="input100" 
+        [ngClass]="{'has-val' : loginForm.get('employeeId')?.value?.length > 0}" formControlName="employeeId" type="text" name="email">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Employee Id</span>
+    </div>
+
+    <div class="flex-sb-m w-full p-t-3 p-b-32">
+        <div class="contact100-form-checkbox">
+            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+            <label class="label-checkbox100" for="ckb1">
+                Remember me
+            </label>
+        </div>
+
+        <div>
+            <a routerLink="/login" class="txt1">
+                Forgot Employee Id?
+            </a>
+        </div>
+    </div>
+
+
+    <div class="container-login100-form-btn">
+        <button (click)="loginUser()" class="login100-form-btn">
+            Login
+        </button>
+    </div>
+    
+    <div class="text-center p-t-46 p-b-20">
+        <span class="txt2">
+            or sign up using
+        </span>
+    </div>
+
+    <!-- Need to figure out what type of common login we can use -->
+
+    <div class="login100-form-social flex-c-m">
+        <a routerLink="/signup" class="login100-form-social-item flex-c-m bg1 m-1">
+            <i class="bi bi-envelope-fill"></i>
+        </a>
+
+        <a routerLink="/login" class="login100-form-social-item flex-c-m bg1 m-1">
+            <i class="bi bi-facebook"></i>
+        </a>
+
+        <a routerLink="/login" class="login100-form-social-item flex-c-m bg2 m-1">
+            <i class="bi bi-twitter"></i>
+        </a>
+    </div>
+</form>

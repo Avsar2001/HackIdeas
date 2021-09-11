@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url("../src/assets/fonts/poppins/Poppins-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url("../src/assets/fonts/montserrat/Montserrat-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("../src/assets/fonts/montserrat/Montserrat-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: Poppins-Regular, sans-serif;
+    background: rgba(0, 0, 0, 0.1);
+}

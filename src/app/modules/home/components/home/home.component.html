@@ -1,0 +1,267 @@
+<div id="home">
+    <div class="right-side-bar" [@openClose]="isExpanded ? 'open' : 'close'" >
+        <svg 
+            *ngIf="!isExpanded"
+            style="margin: auto; cursor: pointer;"
+            (click)="isExpanded = !isExpanded"
+            xmlns="http://www.w3.org/2000/svg" 
+            width="32" 
+            height="32" 
+            fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16"
+        >
+            <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+        </svg>
+        
+        <div *ngIf="isExpanded" class="offcanvas-body">
+            <div class="nav-bar-avatar-container">
+                <img class="rounded nav-bar-avatar" height="200px" alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+            </div>
+            
+            <svg 
+            *ngIf="isExpanded"
+            style="position: absolute; top: 50%; cursor: pointer;"
+            (click)="isExpanded = !isExpanded"
+            xmlns="http://www.w3.org/2000/svg" 
+            width="32" 
+            height="32" 
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16"
+            >
+                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+            </svg>
+            
+            <div style="display: flex;"> 
+                <div class="dropdown-divider" style="margin-left: auto; margin-right: 10px; width: 70%;"></div>
+
+                <svg style="margin-right: 20px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                    <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+                  </svg>
+            </div>
+
+            <div class="card">
+                <div class="products" style="height: 300px;">
+                    <div class="product active" product-id="1" product-color="#D18B49">
+                        <div class="thumbnail"><img src="../../../../../assets/images/characters-fixing-computer-chatbot-isometric-icon-3d/2002.i039.010_chatbot_messenger_ai_isometric_set-09.jpg">
+                        </div>
+                        <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                        <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                            condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                        </svg>
+                        12054
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="products" style="height: 300px;">
+                    <div class="product active" product-id="1" product-color="#D18B49">
+                        <div class="thumbnail"><img src="../../../../../assets/images/characters-fixing-computer-chatbot-isometric-icon-3d/2002.i039.010_chatbot_messenger_ai_isometric_set-09.jpg">
+                        </div>
+                        <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                        <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                            condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                        </svg>
+                        12054
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="products" style="height: 300px;">
+                    <div class="product active" product-id="1" product-color="#D18B49">
+                        <div class="thumbnail"><img src="../../../../../assets/images/characters-fixing-computer-chatbot-isometric-icon-3d/2002.i039.010_chatbot_messenger_ai_isometric_set-09.jpg">
+                        </div>
+                        <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                        <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                            condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                        </svg>
+                        12054
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isExpanded" (click)="isExpanded = !isExpanded" [ngClass]="{'show': isExpanded}" class="offcanvas-backdrop fade" ></div>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div id="logo">
+                <h1><a href="index.html"><span>H</span>ackIdeas</a></h1>
+            </div>
+
+            <!-- .navbar -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="" (click)="logout()">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= List Section ======= -->
+    <div>
+        <div class="container">
+            <div style="display: flex;">
+                <div class="d-sm-flex flex-sm-row flex-wrap position-fixed p-2 item-tags">
+                    <button type="button" class="btn btn-primary">
+                        Notifications <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        abc <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        dk <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        didwinin <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        dw <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        ddddo <span class="badge badge-light">4</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        dwdw <span class="badge badge-light">4</span>
+                    </button>
+                </div>
+                <div class="container-fluid item-list">
+                    <button style="margin-right: 10px;" type="button" class="btn btn-outline-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                        Vote
+                    </button>
+                    <button type="button" class="btn btn-outline-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                        Date
+                    </button>
+                    <div class="d-sm-flex flex-sm-row flex-wrap">
+                        <div class="card">
+                            <svg style="align-self: flex-end; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                            </svg>
+                            <div class="products" style="height: 350px;">
+                                <div class="product active" product-id="1" product-color="#D18B49">
+                                    <div class="thumbnail"><img src="../../../../../assets/images/characters-fixing-computer-chatbot-isometric-icon-3d/2002.i039.010_chatbot_messenger_ai_isometric_set-09.jpg">
+                                    </div>
+                                    <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                                    <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                                        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                                    </svg>
+                                    12054
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <svg style="align-self: flex-end; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                            </svg>
+                            <div class="products" style="height: 350px;">
+                                <div class="product active" product-id="1" product-color="#D18B49">
+                                    <div class="thumbnail"><img
+                                            src="../../../../../assets/images/bitcoin-3d-illustration.jpg">
+                                    </div>
+                                    <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                                    <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                                        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                                    </svg>
+                                    12054
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <svg style="align-self: flex-end; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                            </svg>
+                            <div class="products" style="height: 350px;">
+                                <div class="product active" product-id="1" product-color="#D18B49">
+                                    <div class="thumbnail"><img
+                                            src="../../../../../assets/images/connected-living-abstract-concept-illustration/Wavy_Tech-26_Single-05.jpg">
+                                    </div>
+                                    <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                                    <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                                        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                                    </svg>
+                                    12054
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <svg style="align-self: flex-end; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                            </svg>
+                            <div class="products" style="height: 350px;">
+                                <div class="product active" product-id="1" product-color="#D18B49">
+                                    <div class="thumbnail"><img
+                                            src="../../../../../assets/images/global-data-security-personal-data-security-cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection/Data_security_24.jpg">
+                                    </div>
+                                    <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
+                                    <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                                        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+                                        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+                                    </svg>
+                                    12054
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End List Section -->
+</div>
