@@ -1,0 +1,26 @@
+<div class="card" [class]="customClass">
+    <div class="item-header">
+        {{cardData.createdOn}}
+        <i *ngIf="isSaveIconVisible" class="bi bi-bookmark item-bookmark"></i>
+    </div>
+    <div class="products" style="height: 350px;">
+        <div class="product active">
+            <div class="thumbnail">
+                <img [src]="cardData.imgUrl" [alt]="cardData.alt">
+            </div>
+            <h1 class="title" style="color: rgb(209, 139, 73);">{{cardData.title}}</h1>
+            <div class="author">
+                <p>- {{cardData.createdBy}}</p>
+            </div>
+            <p class="description">
+                <ng-content></ng-content>
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
+            <i style="font-size: 24px;" class="bi bi-arrow-up-square-fill"></i>
+            {{cardData.votesCount}}
+        </a>
+    </div>
+</div>
