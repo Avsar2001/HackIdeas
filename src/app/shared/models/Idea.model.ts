@@ -1,10 +1,11 @@
 import { User } from '../models/user.model';
 
 export interface Idea {
-    ideaId: string;
+    ideaId: number;
     createdOn: string;
     createdBy: User;
-    votesCount: number;
+    votes: string[];
+    saved: string[];
     title: string;
     description: string;
     tags: string[];

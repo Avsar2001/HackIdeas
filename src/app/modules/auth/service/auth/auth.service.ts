@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+import { from, Observable, of } from 'rxjs';
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +44,13 @@ export class AuthService {
     });
   }
 
-  getCurrentUser(): Promise<any> {
-    // return current user from firebase
-    return this._auth.currentUser;
+  getCurrentUserEmployeeId(): Observable<string | undefined>{
+    // return current user's employee id from firebase
+    const obs = from(this._auth.currentUser);
+    return obs.pipe(
+      map((user: firebase.User | null) => {
+        return user ? user.email?.substr(0, user.email.indexOf('@')) : undefined;
+      })
+    );
   }
 }

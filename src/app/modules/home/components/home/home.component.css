@@ -36,75 +36,6 @@
     box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
     box-sizing: border-box;
 }
-.right-side-bar .card {
-    background: #FFFFFF;
-    width: 300px;
-    margin: 20px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
-    box-sizing: border-box;
-    padding: 18px;
-    text-align: center;
-}
-.right-side-bar .card .products {
-    position: relative;
-    overflow: hidden;
-    transition: 0.5s ease;
-}
-.right-side-bar .card .products .product {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.5s ease;
-}
-.right-side-bar .card .products .product.active {
-    opacity: 1;
-    visibility: visible;
-}
-.right-side-bar .card .products .thumbnail {
-    margin: 0 0 48px;
-}
-.right-side-bar .card .products .thumbnail img {
-    height: 99px;
-    width: 144px;
-    object-fit: contain;
-}
-.right-side-bar .card .products .title {
-    margin: 0 0 12px;
-    color: #D18B49;
-    font-size: 24px;
-    transition: 0.5s ease;
-    font-family: Montserrat-Bold;
-}
-.right-side-bar .card .products .author {
-    display: block;
-    text-align: end;
-    margin: 0 0 10px 0;
-    color: #D18B49;
-    font-size: 12px;
-}
-.right-side-bar .card .products .description {
-    margin: 0 0 48px;
-}
-.right-side-bar .card .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px -12px -12px;
-}
-.right-side-bar .card .btn {
-    border-radius: 2px;
-    padding: 8px 12px;
-    color: #D18B49;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s ease;
-}
-
 /*--------------------------------------------------------------
 # tags section
 --------------------------------------------------------------*/
@@ -115,6 +46,12 @@
 }
 .item-tags button {
     margin: 5px 5px 0 0;
+}
+.item-tags button span {
+    padding-left: 0.45em;
+    color: #6675df;
+    background-color: #f8f9fa;
+    margin-left: 2px;
 }
 
 /*--------------------------------------------------------------
