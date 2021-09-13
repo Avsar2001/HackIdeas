@@ -15,40 +15,20 @@
                 d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
         </svg>
 
-        <!-- <div class="card">
-            <div class="products" style="height: 300px;">
-                <div class="product active" product-id="1" product-color="#D18B49">
-                    <div class="thumbnail"><img
-                            src="../../../../../assets/images/characters-fixing-computer-chatbot-isometric-icon-3d/2002.i039.010_chatbot_messenger_ai_isometric_set-09.jpg">
-                    </div>
-                    <h1 class="title" style="color: rgb(209, 139, 73);">The Magnificent Stag</h1>
-                    <div class="author">- By Avsar Vora</div>
-                    <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                </div>
-            </div>
-            <div class="footer">
-                <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z" />
-                    </svg>
-                    12054
-                </a>
-            </div>
-        </div> -->
-
-        <app-idea-card [customClass]="'sidebar-card'" [isSaveIconVisible]="false" [cardData]="cardObj">
-            {{cardObj.description}}
-        </app-idea-card>
-
-        <app-idea-card [customClass]="'sidebar-card'" [isSaveIconVisible]="false" [cardData]="cardObj">
-            {{cardObj.description}}
-        </app-idea-card>
-
-        <app-idea-card [customClass]="'sidebar-card'" [isSaveIconVisible]="false" [cardData]="cardObj">
-            {{cardObj.description}}
+        <!--   
+            List of saved cards with of Ideas in sync with firestore.
+        -->
+        <app-idea-card 
+            *ngFor="let idea of savedIdeasList" 
+            [cardData]="idea" 
+            [currentUserEmployeeId]="currentUserEmployeeId"
+            [customClass]="'sidebar-card'" 
+            [imgUrl]="'../../../../../assets/images/7747.jpg'"
+            [alt]="'Alt Image'"
+            (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
+            (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
+        >
+            {{idea.description}}
         </app-idea-card>
     </div>
 </div>
@@ -61,26 +41,8 @@
     <div class="container">
         <div style="display: flex;">
             <div class="d-sm-flex flex-sm-row flex-wrap position-fixed p-2 item-tags">
-                <button type="button" class="btn btn-primary">
-                    Notifications <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    abc <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    dk <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    didwinin <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    dw <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    ddddo <span class="badge badge-light">4</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    dwdw <span class="badge badge-light">4</span>
+                <button *ngFor="let tag of tagsList" type="button" class="btn btn-dark">
+                     {{tag?.tag | uppercase}} <span class="badge badge-light">{{tag?.total}}</span>
                 </button>
             </div>
             <div class="container-fluid item-list">
@@ -101,17 +63,21 @@
                     Date
                 </button>
                 <div class="d-sm-flex flex-sm-row flex-wrap">
-                    <app-idea-card [cardData]="cardObj">
-                        {{cardObj.description}}
+                    <!--   
+                        List of cards with of Ideas in sync with firestore.
+                    -->
+                    <app-idea-card 
+                        *ngFor="let idea of ideasList; let i = index;" 
+                        [cardData]="idea"
+                        [currentUserEmployeeId]="currentUserEmployeeId"
+                        [imgUrl]="'../../../../../assets/images/7747.jpg'"
+                        [alt]="'Alt Image'"
+                        (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
+                        (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
+                    >
+                        {{idea.description}}
                     </app-idea-card>
 
-                    <app-idea-card [cardData]="cardObj" >
-                        {{cardObj.description}}
-                    </app-idea-card>
-
-                    <app-idea-card [cardData]="cardObj">
-                        {{cardObj.description}}
-                    </app-idea-card>
                 </div>
             </div>
         </div>

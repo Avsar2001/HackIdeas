@@ -1,16 +1,24 @@
 <div class="card" [class]="customClass">
     <div class="item-header">
-        {{cardData.createdOn}}
-        <i *ngIf="isSaveIconVisible" class="bi bi-bookmark item-bookmark"></i>
+        {{idea?.createdOn | date: 'medium'}}
+        <i 
+            class="bi item-bookmark"
+            [ngClass]="{
+                'bi-bookmark': !isIdeaSaved,
+                'bi-bookmark-check-fill': isIdeaSaved
+            }"
+            (click)="onSaveIdeaClick()"
+        ></i>
     </div>
     <div class="products" style="height: 350px;">
         <div class="product active">
             <div class="thumbnail">
-                <img [src]="cardData.imgUrl" [alt]="cardData.alt">
+                <img [src]="imgUrl" [alt]="alt">
             </div>
-            <h1 class="title" style="color: rgb(209, 139, 73);">{{cardData.title}}</h1>
+            <h1 class="title" style="color: rgb(209, 139, 73);">{{idea?.title | titlecase}}</h1>
             <div class="author">
-                <p>- {{cardData.createdBy}}</p>
+                <!-- <p>- {{idea?.createdBy?.employee_id}}</p> -->
+                <a *ngFor="let tag of idea?.tags" class="badge badge-dark">{{tag | titlecase}}</a>
             </div>
             <p class="description">
                 <ng-content></ng-content>
@@ -18,9 +26,17 @@
         </div>
     </div>
     <div class="footer">
-        <a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">
-            <i style="font-size: 24px;" class="bi bi-arrow-up-square-fill"></i>
-            {{cardData.votesCount}}
+        <a class="btn" id="prev" ripple="" ripple-color="#666666">
+            <i 
+                style="font-size: 24px;" 
+                (click)="onUpvoteClick()" 
+                class="bi" 
+                [ngClass]="{
+                    'bi-arrow-up-square-fill': isUpvoted, 
+                    'bi-arrow-up-square': !isUpvoted
+                }"
+            ></i>
+            {{idea?.votes?.length}}
         </a>
     </div>
 </div>
