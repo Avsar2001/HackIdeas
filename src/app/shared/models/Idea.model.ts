@@ -5,6 +5,7 @@ export interface Idea {
     createdOn: string;
     createdBy: User;
     votes: string[];
+    votesCount: number;
     saved: string[];
     title: string;
     description: string;

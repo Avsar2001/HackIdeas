@@ -37,6 +37,7 @@
 .card .products .product.active {
     opacity: 1;
     visibility: visible;
+    min-width: 312px;
 }
 .card .products .thumbnail {
     margin: 0 0 18px;

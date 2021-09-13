@@ -41,8 +41,10 @@ export class IdeaCardComponent implements OnInit {
     const ID = this.currentUserEmployeeId;
     if(!this.isUpvoted) {
       this.idea.votes.push(ID);
+      this.idea.votesCount = this.idea.votesCount + 1;
     } else {
       this.idea.votes.splice(this.idea.votes.indexOf(ID), 1);
+      this.idea.votesCount = this.idea.votesCount - 1;
     }
     this.isUpvoted = !this.isUpvoted;
     // Emit updated idea obj.

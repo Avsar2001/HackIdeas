@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Idea } from 'src/app/shared/models/Idea.model';
+import { Sort } from 'src/app/shared/models/sort.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +21,12 @@ export class IdeaService {
    *
    * URL - /ideas
    */
-  public getAllIdeas(): Observable<Idea[]> {
-    return this._fire.collection<Idea>('ideas').valueChanges();
+  public getAllIdeas(filter: Sort): Observable<Idea[]> {
+    return this._fire.collection<Idea>('ideas', ref => ref.orderBy(filter.field, filter.dir))
+      .valueChanges().pipe(
+        take(1)
+      )
+    
   }
 
   /**
@@ -31,7 +37,7 @@ export class IdeaService {
    * URL - /ideas/:id
    */
    public updateVoteCount(id: number, votes: string[]): Promise<void> {
-    return this._fire.doc<Idea>(`ideas/${id}`).update({votes: votes});
+    return this._fire.doc<Idea>(`ideas/${id}`).update({votes: votes, votesCount: votes.length});
   }
 
   /**
