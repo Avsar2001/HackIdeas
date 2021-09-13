@@ -27,6 +27,25 @@
     outline: 0;
     box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
 }
+.right-side-bar #logo h1 {
+    color: #505050;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0;
+    font-family: Montserrat-Bold;
+}
+
+.right-side-bar #logo h1 a {
+    color: #333333;
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 32px;
+}
+
+.right-side-bar #logo h1 a span {
+    color: #6675df;
+}
 .right-side-bar .nav-bar-avatar-container {
     display: flex;
     justify-content: center;
