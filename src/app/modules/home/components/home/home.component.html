@@ -8,6 +8,10 @@
 
     <div *ngIf="isExpanded" class="offcanvas-body">
 
+        <div id="logo">
+            <h1><a routerLink="/home"><span>#</span>{{currentUserEmployeeId | titlecase}}</a></h1>
+        </div>
+
         <svg *ngIf="isExpanded" style="position: absolute; top: 50%; cursor: pointer;"
             (click)="isExpanded = !isExpanded" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
             fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
@@ -18,6 +22,7 @@
         <!--   
             List of saved cards with of Ideas in sync with firestore.
         -->
+        <div *ngIf="savedIdeasList.length === 0" style="position: absolute; top: 50%; left: 35%;">No Saved Items Yet!</div>
         <app-idea-card 
             *ngFor="let idea of savedIdeasList" 
             [cardData]="idea" 
