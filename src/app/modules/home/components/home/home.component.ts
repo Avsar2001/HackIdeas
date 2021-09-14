@@ -1,13 +1,16 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/service/auth/auth.service';
 import { IdeaCardComponent } from 'src/app/shared/components/idea-card/idea-card.component';
 import { Idea } from 'src/app/shared/models/Idea.model';
 import { Sort } from 'src/app/shared/models/sort.model';
 import { TAGS } from 'src/app/shared/models/tags.list.model';
 import { THUMBNAILS } from 'src/app/shared/models/thumbnails.enum';
+import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { IdeaService } from '../../services/idea/idea.service';
+import { IdeaDetailsFormComponent } from '../idea-details-form/idea-details-form.component';
 
 @Component({
   selector: 'app-home',
@@ -32,9 +35,10 @@ import { IdeaService } from '../../services/idea/idea.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private ideaService: IdeaService,
+    private _ideaService: IdeaService,
     private _auth: AuthService,
-    private _modal: NgbModal
+    private _modal: NgbModal,
+    private _spinner: SpinnerService
   ) { }
 
   isExpanded = false;
@@ -62,6 +66,7 @@ export class HomeComponent implements OnInit {
   filterObj: string[] = [];
 
   ngOnInit(): void {
+    this._spinner.show();
 
     // Getting current user from Auth service
     this._auth.getCurrentUserEmployeeId().subscribe((userEmployeeId: string | undefined) => {
@@ -73,7 +78,7 @@ export class HomeComponent implements OnInit {
     });
 
     // Updated list of saved Ideas depending uopn current user
-    this.ideaService.getAllIdeas(this.sortObj).subscribe((ideas: Idea[]) => {
+    this._ideaService.getAllIdeas(this.sortObj).subscribe((ideas: Idea[]) => {
       if(ideas) {
         // Creating map for counting total ideas with perticular tags
         const MAP = new Map<string, number>();
@@ -104,38 +109,49 @@ export class HomeComponent implements OnInit {
         });
         this.tagsList = tmp;
       }
+      this._spinner.hide();
     }, err => {
+      this._spinner.hide();
       window.alert(err);
     });
 
   }
 
   getAllIdeas(): void {
-    this.ideaService.getAllIdeas(this.sortObj).subscribe((ideas: Idea[]) => {
+    this._spinner.show();
+    this._ideaService.getAllIdeas(this.sortObj).subscribe((ideas: Idea[]) => {
       if(ideas) {
         this.ideasList = ideas as Idea[];
         this.savedIdeasList = (ideas as Idea[]).filter(idea => idea.saved.includes(this.currentUserEmployeeId));
         // Filter list based on current applied filters
         this.applyFilter();
       }
+      this._spinner.hide();
     }, err => {
+      this._spinner.hide();
       window.alert(err);
     });
   }
 
-  updateVoteCount(ideaId: number, votes: string[]): void {
-    this.ideaService.updateVoteCount(ideaId, votes).then(data => {
+  updateVoteCount(ideaId: string | undefined, votes: string[]): void {
+    this._spinner.show();
+    this._ideaService.updateVoteCount(ideaId || '', votes).then(data => {
       console.log("Votes Array Updated");
+      this._spinner.hide();
     }, err => {
+      this._spinner.hide();
       alert(err);
     })
   }
 
-  updateSavedArray(ideaId: number, saved: string[]): void {
-    this.ideaService.updateSavedArray(ideaId, saved).then(data => {
+  updateSavedArray(ideaId: string | undefined, saved: string[]): void {
+    this._spinner.show();
+    this._ideaService.updateSavedArray(ideaId || '', saved).then(data => {
       console.log("Saved Array Updated");
       this.getAllIdeas();
+      this._spinner.hide();
     }, err => {
+      this._spinner.hide();
       alert(err);
     })
   }
@@ -172,8 +188,7 @@ export class HomeComponent implements OnInit {
   }
 
   openIdeaDetails(idea: Idea): void {
-    this.ideaDetailModal = this._modal.open(IdeaCardComponent, 
-    {
+    this.ideaDetailModal = this._modal.open(IdeaCardComponent, {
       animation: true,
       backdrop: 'static',
       centered: true,
@@ -186,6 +201,30 @@ export class HomeComponent implements OnInit {
     this.ideaDetailModal.componentInstance.imgUrl = '../../../../../assets/images/7747.jpg';
     this.ideaDetailModal.componentInstance.alt = 'Alt Image';
     this.ideaDetailModal.componentInstance.isModal = true;
+  }
+
+  openIdeaDetailsForm(): void {
+    this.ideaDetailModal = this._modal.open(IdeaDetailsFormComponent, {
+      animation: true,
+      backdrop: 'static',
+      centered: true,
+      windowClass: 'idea-details-form-modal'
+    });
+
+    // All Input properties
+    this.ideaDetailModal.componentInstance.currentUserEmployeeId = this.currentUserEmployeeId;
+
+    // All output properties
+    (this.ideaDetailModal.componentInstance.onIdeaDetailsFormSubmit as Observable<Idea>).subscribe((submitObj: Idea) => {
+      this._ideaService.saveNewidea(submitObj.ideaId || '', submitObj).then(data => {
+        console.log("Idea created successfully!" + data);
+        this.ideaDetailModal.close();
+        // reload all cards list
+        this.getAllIdeas();
+      })
+    }, err => {
+      window.alert(err);
+    });
   }
 
 }

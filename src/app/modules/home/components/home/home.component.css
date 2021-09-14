@@ -81,3 +81,7 @@
     width:100%;
     margin-top: 100px;
 }
+.item-list .list-container-header {
+    display: flex;
+    justify-content: space-between;
+}

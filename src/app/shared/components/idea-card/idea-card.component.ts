@@ -20,6 +20,7 @@ export class IdeaCardComponent implements OnInit {
   // Output Properties
   @Output() votesCountChange: EventEmitter<string[]> = new EventEmitter<string[]>();
   @Output() savedIdeaChange: EventEmitter<string[]> = new EventEmitter<string[]>();
+  @Output() openIdeaDetailsModal: EventEmitter<void> = new EventEmitter<void>();
 
   idea!: Idea;
   isUpvoted: boolean = true;

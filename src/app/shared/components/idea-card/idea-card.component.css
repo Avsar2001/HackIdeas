@@ -12,6 +12,9 @@
     margin-top: 20px;
     margin-left: auto;
 }
+.modal-card {
+    margin: 0;
+}
 .card .item-header {
     display: flex;
     justify-content: space-between;
@@ -38,6 +41,7 @@
     opacity: 1;
     visibility: visible;
     min-width: 312px;
+    cursor: pointer;
 }
 .card .products .thumbnail {
     margin: 0 0 18px;

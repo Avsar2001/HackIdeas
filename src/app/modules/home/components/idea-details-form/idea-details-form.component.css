@@ -1,0 +1,33 @@
+.card {
+    background: #FFFFFF;
+    width: 450px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    box-sizing: border-box;
+    padding: 18px;
+    font-family: 'Poppins-Regular';
+}
+.card .item-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    color: #6675df;
+    font-family: Montserrat-Bold;
+}
+.card .item-header span {
+    color: #333333;
+}
+.card form select option {
+    border-top: 1px solid #fafafa;
+    padding: .78571429rem 1.14285714rem!important;
+    white-space: normal;
+    word-wrap: normal;
+    color: rgba(0,0,0,.87);
+}
+.card form select option:hover {
+    background: rgba(0,0,0,.05);
+    color: rgba(0,0,0,.95);
+    z-index: 13;
+    cursor: pointer;
+}
