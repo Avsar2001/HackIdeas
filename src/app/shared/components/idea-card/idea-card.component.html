@@ -2,6 +2,7 @@
     <div class="item-header">
         {{idea?.createdOn | date: 'medium'}}
         <i 
+            *ngIf="!isModal"
             class="bi item-bookmark"
             [ngClass]="{
                 'bi-bookmark': !isIdeaSaved,
@@ -9,27 +10,27 @@
             }"
             (click)="onSaveIdeaClick()"
         ></i>
+        <i *ngIf="isModal" style="cursor: pointer;" (click)="closeModal()" class="bi bi-x-lg"></i>
     </div>
     <div class="products" style="height: 350px;">
         <div class="product active">
             <div class="thumbnail">
                 <img [src]="imgUrl" [alt]="alt">
             </div>
-            <h1 class="title" style="color: rgb(209, 139, 73);">{{idea?.title | titlecase}}</h1>
+            <h1 class="title">{{idea?.title | titlecase}}</h1>
             <div class="author">
                 <!-- <p>- {{idea?.createdBy?.employee_id}}</p> -->
                 <a *ngFor="let tag of idea?.tags" class="badge badge-dark">{{tag | titlecase}}</a>
             </div>
             <p class="description">
-                <ng-content></ng-content>
+                {{idea?.description}}
             </p>
         </div>
     </div>
     <div class="footer">
-        <a class="btn" id="prev" ripple="" ripple-color="#666666">
+        <a class="btn" [ngClass]="{'disabled-cursor': isModal}" (click)="onUpvoteClick()"  id="prev" ripple="" ripple-color="#666666">
             <i 
                 style="font-size: 24px;" 
-                (click)="onUpvoteClick()" 
                 class="bi" 
                 [ngClass]="{
                     'bi-arrow-up-square-fill': isUpvoted, 

@@ -21,12 +21,11 @@ export class IdeaService {
    *
    * URL - /ideas
    */
-  public getAllIdeas(filter: Sort): Observable<Idea[]> {
-    return this._fire.collection<Idea>('ideas', ref => ref.orderBy(filter.field, filter.dir))
+  public getAllIdeas(sort: Sort): Observable<Idea[]> {
+    return this._fire.collection<Idea>('ideas', ref => ref.orderBy(sort.field, sort.dir))
       .valueChanges().pipe(
         take(1)
-      )
-    
+      );
   }
 
   /**

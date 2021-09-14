@@ -33,7 +33,6 @@
             (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
             (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
         >
-            {{idea.description}}
         </app-idea-card>
     </div>
 </div>
@@ -46,7 +45,16 @@
     <div class="container">
         <div style="display: flex;">
             <div class="d-sm-flex flex-sm-row flex-wrap position-fixed p-2 item-tags">
-                <button *ngFor="let tag of tagsList" type="button" class="btn btn-dark">
+                <button 
+                    *ngFor="let tag of tagsList" 
+                    type="button" 
+                    class="btn"
+                    [ngClass]="{
+                        'btn-dark': filterObj?.includes(tag?.tag?.toLowerCase()),
+                        'btn-outline-dark': !filterObj?.includes(tag?.tag?.toLowerCase())
+                    }"
+                    (click)="onFilterChange(tag?.tag)"
+                >
                      {{tag?.tag | uppercase}} <span class="badge badge-light">{{tag?.total}}</span>
                 </button>
             </div>
@@ -94,15 +102,15 @@
                         List of cards with of Ideas in sync with firestore.
                     -->
                     <app-idea-card 
-                        *ngFor="let idea of ideasList; let i = index;" 
+                        *ngFor="let idea of displayIdeasList; let i = index;" 
                         [cardData]="idea"
                         [currentUserEmployeeId]="currentUserEmployeeId"
-                        [imgUrl]="'../../../../../assets/images/7747.jpg'"
+                        [imgUrl]="THUMBNAILS.get(idea.tags[0]) || ''"
                         [alt]="'Alt Image'"
                         (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
                         (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
+                        (click)="openIdeaDetails(idea)"
                     >
-                        {{idea.description}}
                     </app-idea-card>
 
                 </div>
