@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Idea } from '../../models/Idea.model';
 
 @Component({
@@ -14,6 +15,7 @@ export class IdeaCardComponent implements OnInit {
   @Input() currentUserEmployeeId: string = "";
   @Input() alt: string = "Thumnail Image";
   @Input() customClass: string = '';
+  @Input() isModal: boolean = false;
 
   // Output Properties
   @Output() votesCountChange: EventEmitter<string[]> = new EventEmitter<string[]>();
@@ -23,7 +25,9 @@ export class IdeaCardComponent implements OnInit {
   isUpvoted: boolean = true;
   isIdeaSaved: boolean = false;
 
-  constructor() { }
+  constructor(
+    private _ideaDetailsModal: NgbActiveModal
+  ) { }
 
   ngOnInit(): void {
     // Immutablility for safety of original data
@@ -38,17 +42,20 @@ export class IdeaCardComponent implements OnInit {
 
 
   public onUpvoteClick(): void {
-    const ID = this.currentUserEmployeeId;
-    if(!this.isUpvoted) {
-      this.idea.votes.push(ID);
-      this.idea.votesCount = this.idea.votesCount + 1;
-    } else {
-      this.idea.votes.splice(this.idea.votes.indexOf(ID), 1);
-      this.idea.votesCount = this.idea.votesCount - 1;
+    // Don't allow user to upvote on modal compo.
+    if(!this.isModal) {
+      const ID = this.currentUserEmployeeId;
+      if(!this.isUpvoted) {
+        this.idea.votes.push(ID);
+        this.idea.votesCount = this.idea.votesCount + 1;
+      } else {
+        this.idea.votes.splice(this.idea.votes.indexOf(ID), 1);
+        this.idea.votesCount = this.idea.votesCount - 1;
+      }
+      this.isUpvoted = !this.isUpvoted;
+      // Emit updated idea obj.
+      this.votesCountChange.emit(this.idea.votes);
     }
-    this.isUpvoted = !this.isUpvoted;
-    // Emit updated idea obj.
-    this.votesCountChange.emit(this.idea.votes);
   }
 
   public onSaveIdeaClick(): void {
@@ -63,6 +70,11 @@ export class IdeaCardComponent implements OnInit {
     this.isIdeaSaved = !this.isIdeaSaved;
     // Emit updated idea obj.
     this.savedIdeaChange.emit(this.idea.saved);
+  }
+
+  closeModal(): void {
+    // close current modal without resolve promise
+    this._ideaDetailsModal.dismiss();
   }
  
 }

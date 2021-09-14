@@ -30,3 +30,11 @@ html {
     font-family: Poppins-Regular, sans-serif;
     background: rgba(0, 0, 0, 0.1);
 }
+/*--------------------------------------------------------------
+# Details modal
+--------------------------------------------------------------*/
+.modal-content {
+    background-color: transparent;
+    background-color: none;
+    border: none;
+}

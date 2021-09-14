@@ -6,5 +6,5 @@ export const TAGS = [
     "cloud",
     "cyber security",
     "robotics",
-    "bot",
+    "bot"
 ]

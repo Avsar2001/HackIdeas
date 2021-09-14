@@ -15,6 +15,9 @@ import { IdeaCardComponent } from './components/idea-card/idea-card.component';
     CommonModule,
     ReactiveFormsModule,
     IdeaCardComponent
+  ],
+  providers: [
+    IdeaCardComponent
   ]
 })
 export class SharedModule { }
