@@ -35,7 +35,7 @@ export class IdeaService {
    *
    * URL - /ideas/:id
    */
-   public updateVoteCount(id: number, votes: string[]): Promise<void> {
+   public updateVoteCount(id: string, votes: string[]): Promise<void> {
     return this._fire.doc<Idea>(`ideas/${id}`).update({votes: votes, votesCount: votes.length});
   }
 
@@ -46,7 +46,18 @@ export class IdeaService {
    *
    * URL - /ideas/:id
    */
-   public updateSavedArray(id: number, saved: string[]): Promise<void> {
+   public updateSavedArray(id: string, saved: string[]): Promise<void> {
     return this._fire.doc<Idea>(`ideas/${id}`).update({saved: saved});
+  }
+
+  /**
+   * Save new Idea/card to 'ideas' collection using random 4 digit document id
+   *
+   * Request Type: POST
+   *
+   * URL - /ideas/:id
+   */
+   public saveNewidea(id: string, idea: Idea): Promise<void> {
+     return this._fire.doc<Idea>(`ideas/${id}`).set(idea);
   }
 }

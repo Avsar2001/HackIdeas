@@ -34,7 +34,8 @@ html {
 # Details modal
 --------------------------------------------------------------*/
 .modal-content {
-    background-color: transparent;
-    background-color: none;
-    border: none;
+    max-width: fit-content;
+    background-color: transparent !important;
+    background-color: none !important;
+    border: none !important;
 }

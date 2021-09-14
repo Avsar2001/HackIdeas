@@ -28,10 +28,10 @@
             [cardData]="idea" 
             [currentUserEmployeeId]="currentUserEmployeeId"
             [customClass]="'sidebar-card'" 
-            [imgUrl]="'../../../../../assets/images/7747.jpg'"
+            [imgUrl]="THUMBNAILS.get(idea.tags[0]) || ''"
             [alt]="'Alt Image'"
-            (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
-            (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
+            (votesCountChange)="updateVoteCount(idea?.ideaId,$event)"
+            (savedIdeaChange)="updateSavedArray(idea?.ideaId,$event)"
         >
         </app-idea-card>
     </div>
@@ -59,44 +59,51 @@
                 </button>
             </div>
             <div class="container-fluid item-list">
-                <button 
-                    style="margin-right: 10px;" 
-                    type="button" 
-                    class="btn"
-                    [ngClass]="{
-                        'btn-dark': sortObj.field === 'votesCount',
-                        'btn-outline-dark': sortObj.field !== 'votesCount'
-                    }"
-                    (click)="onSortChange('votesCount')"
-                >
-                    <i *ngIf="sortObj.field === 'votesCount'"
-                        class="bi" 
+                <div class="list-container-header">
+                    <div class="sort-buttons">
+                        <button 
+                        style="margin-right: 10px;" 
+                        type="button" 
+                        class="btn"
                         [ngClass]="{
-                            'bi-arrow-up': sortObj.dir === 'asc',
-                            'bi-arrow-down': sortObj.dir === 'desc'
+                            'btn-dark': sortObj.field === 'votesCount',
+                            'btn-outline-dark': sortObj.field !== 'votesCount'
                         }"
-                    ></i>
-                    Vote
-                </button>
-                <button 
-                    type="button" 
-                    class="btn btn-outline-dark"
-                    [ngClass]="{
-                        'btn-dark': sortObj.field === 'createdOn',
-                        'btn-outline-dark': sortObj.field !== 'createdOn'
-                    }"
-                    (click)="onSortChange('createdOn')"
-                >
-                    <i 
-                        *ngIf="sortObj.field === 'createdOn'"
-                        class="bi"
-                        [ngClass]="{
-                            'bi-arrow-up': sortObj.dir === 'asc',
-                            'bi-arrow-down': sortObj.dir === 'desc'
-                        }"
-                    ></i>
-                    Date
-                </button>
+                        (click)="onSortChange('votesCount')"
+                    >
+                        <i *ngIf="sortObj.field === 'votesCount'"
+                            class="bi" 
+                            [ngClass]="{
+                                'bi-arrow-up': sortObj.dir === 'asc',
+                                'bi-arrow-down': sortObj.dir === 'desc'
+                            }"
+                        ></i>
+                        Vote
+                        </button>
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark"
+                            [ngClass]="{
+                                'btn-dark': sortObj.field === 'createdOn',
+                                'btn-outline-dark': sortObj.field !== 'createdOn'
+                            }"
+                            (click)="onSortChange('createdOn')"
+                        >
+                            <i 
+                                *ngIf="sortObj.field === 'createdOn'"
+                                class="bi"
+                                [ngClass]="{
+                                    'bi-arrow-up': sortObj.dir === 'asc',
+                                    'bi-arrow-down': sortObj.dir === 'desc'
+                                }"
+                            ></i>
+                            Date
+                        </button>
+                    </div>
+                   
+                    <button (click)="openIdeaDetailsForm()" type="button" class="btn btn-outline-dark">New Idea</button>
+                </div>
+                
                 <div class="d-sm-flex flex-sm-row flex-wrap">
                     <!--   
                         List of cards with of Ideas in sync with firestore.
@@ -107,9 +114,9 @@
                         [currentUserEmployeeId]="currentUserEmployeeId"
                         [imgUrl]="THUMBNAILS.get(idea.tags[0]) || ''"
                         [alt]="'Alt Image'"
-                        (votesCountChange)="updateVoteCount(idea.ideaId,$event)"
-                        (savedIdeaChange)="updateSavedArray(idea.ideaId,$event)"
-                        (click)="openIdeaDetails(idea)"
+                        (votesCountChange)="updateVoteCount(idea?.ideaId,$event)"
+                        (savedIdeaChange)="updateSavedArray(idea?.ideaId,$event)"
+                        (openIdeaDetailsModal)="openIdeaDetails(idea)"
                     >
                     </app-idea-card>
 

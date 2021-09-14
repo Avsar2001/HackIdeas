@@ -1,7 +1,7 @@
 import { User } from '../models/user.model';
 
 export interface Idea {
-    ideaId: number;
+    ideaId?: string;
     createdOn: string;
     createdBy: User;
     votes: string[];

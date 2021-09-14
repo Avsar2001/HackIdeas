@@ -13,7 +13,7 @@
         <i *ngIf="isModal" style="cursor: pointer;" (click)="closeModal()" class="bi bi-x-lg"></i>
     </div>
     <div class="products" style="height: 350px;">
-        <div class="product active">
+        <div class="product active" (click)="openIdeaDetailsModal.emit()">
             <div class="thumbnail">
                 <img [src]="imgUrl" [alt]="alt">
             </div>

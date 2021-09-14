@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="item-header mb-4">
+        <div>New <span>Idea</span></div>
+        <i style="cursor: pointer; font-size: 12px; color: #333333;" (click)="closeModal()" class="bi bi-x-lg"></i>
+    </div>
+    <!-- Default form contact -->
+    <form [formGroup]="ideaDetailsForm" (ngSubmit)="onFormSubmit()">
+
+        <!-- Title -->
+        <input formControlName="title" type="text" id="title" class="form-control mb-4" placeholder="Title">
+
+        <!-- Description -->
+        <div class="form-group mb-4">
+            <textarea formControlName="description" class="form-control" id="discription" rows="3" placeholder="Discription"></textarea>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="exampleFormControlSelect1">Tags select</label>
+            <select formControlName="tags" class="form-control" multiple>
+              <option *ngFor="let tag of tagsList" [value]="tag">{{tag | titlecase}}</option>
+            </select>
+          </div>
+
+        <!-- Send button -->
+        <button 
+            [disabled]="ideaDetailsForm.invalid"
+            style="background-color: #6675df; border: white; margin-right: 10px;" 
+            class="btn btn-dark btn-block" 
+            type="submit"
+        >Send</button>
+        <button class="btn btn-dark btn-block" (click)="closeModal()" type="submit">Cancle</button>
+
+    </form>
+<!-- Default form contact -->
+</div>
