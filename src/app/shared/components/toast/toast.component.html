@@ -1,0 +1,29 @@
+<div aria-live="polite" style="position: fixed; height: auto;width: auto;">
+
+  <div *ngFor="let toast of toasts" class="toast fade show" style="position: absolute; top: 0; right: 0;">
+    <div class="toast-header">
+      <strong class="mr-auto" style="color: #6675df;">{{toast.header}}</strong>
+      <div>
+        <small>just now</small>
+        <i style="cursor: pointer; margin-left: 5px;" class="bi bi-x-lg"></i>
+      </div>
+    </div>
+    <div class="toast-body">
+      {{toast.body}}
+    </div>
+  </div>
+
+  <!-- <div class="toast fade show" style="position: absolute; top: 0; right: 0;">
+    <div class="toast-header">
+      <strong class="mr-auto" style="color: #6675df;">ABC</strong>
+      <div>
+        <small>just now</small>
+        <i style="cursor: pointer; margin-left: 5px;" class="bi bi-x-lg"></i>
+      </div>
+    </div>
+    <div class="toast-body">
+      ABC
+    </div>
+  </div> -->
+  
+</div>

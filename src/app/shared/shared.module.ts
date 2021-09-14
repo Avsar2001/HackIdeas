@@ -3,23 +3,29 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IdeaCardComponent } from './components/idea-card/idea-card.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     IdeaCardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ToastComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IdeaCardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ToastComponent,
+    NgbModule
   ],
   providers: [
     IdeaCardComponent

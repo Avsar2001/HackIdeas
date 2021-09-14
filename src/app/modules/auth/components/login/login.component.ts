@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { ToastrService } from 'src/app/shared/services/toastr/toastr.service';
 import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder,
     private _auth: AuthService,
     private _router: Router,
-    private _spinner: SpinnerService
+    private _spinner: SpinnerService,
+    private _toastr: ToastrService
   ) { }
 
   loginForm!: FormGroup;
@@ -39,10 +41,12 @@ export class LoginComponent implements OnInit {
         employee_id: this.loginForm.value.employeeId
       }).then(data => {
         this._spinner.hide();
-        console.log(data);
+
+        this._toastr.show("Login", "Login Succesfull");
+
         // Route redirect
         this._router.navigate(['/home']);
-      }).catch(err => console.log(err));
+      }).catch(err => this._toastr.show("Error", err));
 
       // Error handling using common service
     }

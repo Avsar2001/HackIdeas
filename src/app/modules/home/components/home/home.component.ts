@@ -9,6 +9,7 @@ import { Sort } from 'src/app/shared/models/sort.model';
 import { TAGS } from 'src/app/shared/models/tags.list.model';
 import { THUMBNAILS } from 'src/app/shared/models/thumbnails.enum';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { ToastrService } from 'src/app/shared/services/toastr/toastr.service';
 import { IdeaService } from '../../services/idea/idea.service';
 import { IdeaDetailsFormComponent } from '../idea-details-form/idea-details-form.component';
 
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
     private _ideaService: IdeaService,
     private _auth: AuthService,
     private _modal: NgbModal,
-    private _spinner: SpinnerService
+    private _spinner: SpinnerService,
+    private _toastr: ToastrService
   ) { }
 
   isExpanded = false;
@@ -74,7 +76,7 @@ export class HomeComponent implements OnInit {
         this.currentUserEmployeeId = userEmployeeId;
       }
     }, err => {
-      window.alert(err);
+      this._toastr.show("Error", err)
     });
 
     // Updated list of saved Ideas depending uopn current user
@@ -112,7 +114,7 @@ export class HomeComponent implements OnInit {
       this._spinner.hide();
     }, err => {
       this._spinner.hide();
-      window.alert(err);
+      this._toastr.show("Error", err);
     });
 
   }
@@ -129,30 +131,28 @@ export class HomeComponent implements OnInit {
       this._spinner.hide();
     }, err => {
       this._spinner.hide();
-      window.alert(err);
+      this._toastr.show("Error", err);
     });
   }
 
   updateVoteCount(ideaId: string | undefined, votes: string[]): void {
     this._spinner.show();
     this._ideaService.updateVoteCount(ideaId || '', votes).then(data => {
-      console.log("Votes Array Updated");
       this._spinner.hide();
     }, err => {
       this._spinner.hide();
-      alert(err);
+      this._toastr.show("Error", err);
     })
   }
 
   updateSavedArray(ideaId: string | undefined, saved: string[]): void {
     this._spinner.show();
     this._ideaService.updateSavedArray(ideaId || '', saved).then(data => {
-      console.log("Saved Array Updated");
       this.getAllIdeas();
       this._spinner.hide();
     }, err => {
       this._spinner.hide();
-      alert(err);
+      this._toastr.show("Error", err)
     })
   }
 
@@ -217,13 +217,14 @@ export class HomeComponent implements OnInit {
     // All output properties
     (this.ideaDetailModal.componentInstance.onIdeaDetailsFormSubmit as Observable<Idea>).subscribe((submitObj: Idea) => {
       this._ideaService.saveNewidea(submitObj.ideaId || '', submitObj).then(data => {
-        console.log("Idea created successfully!" + data);
+        
+        this._toastr.show("Yay!", "Idea was created successfully!");
         this.ideaDetailModal.close();
         // reload all cards list
         this.getAllIdeas();
       })
     }, err => {
-      window.alert(err);
+      this._toastr.show("Error", err);
     });
   }
 
