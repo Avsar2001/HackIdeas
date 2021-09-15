@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
+## Deployed server URL
+
+This project deployed using firebase hosting service with these urls:
+[Link 1](https://slot-booking-app-63276.web.app/)
+[Link 2](https://slot-booking-app-63276.firebaseapp.com/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
